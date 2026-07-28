@@ -52,6 +52,49 @@
 
 #
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
+def print_single_table(number):
+    """Prints the multiplication table for a single number from 1 to 12."""
+    print(f"\nMultiplication Table for {number}:")
+    for i in range(1, 13):
+        result = number * i
+        print(f"{number}  x  {i:<2} =  {result}")
+
+def print_tables_up_to_n(n):
+    """Prints multiplication tables from 1 up to N, with a separator in between."""
+    if n <= 0:
+        print("Error: Please enter a positive integer greater than 0.")
+        return
+        
+    for current in range(1, n + 1):
+        print_single_table(current)
+        if current < n:
+            print("-" * 27)
+
+if __name__ == "__main__":
+    print("=== Multiplication Table Generator ===")
+    print("1. Print a single multiplication table")
+    print("2. Print tables from 1 to N")
+    
+    choice = input("\nChoose an option (1 or 2): ").strip()
+    
+    if choice == "1":
+        try:
+            num = int(input("Enter a number: "))
+            print_single_table(num)
+        except ValueError:
+            print("Please enter a valid whole number.")
+            
+    elif choice == "2":
+        try:
+            n = int(input("Enter N (positive integer): "))
+            if n <= 0:
+                print("Error: N must be a positive integer greater than 0.")
+            else:
+                print_tables_up_to_n(n)
+        except ValueError:
+            print("Please enter a valid whole number.")
+            
+    else:
+        print("Invalid choice. Please run the program again and select 1 or 2.")
 # =============================================================================
 
