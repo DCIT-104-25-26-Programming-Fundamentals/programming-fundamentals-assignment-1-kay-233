@@ -44,4 +44,44 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def get_grade(score):
+    """Calculates the letter grade based on the student's score.
+    
+    Args:
+        score (int/float): The student's score.
+        
+    Returns:
+        str or None: The letter grade ('A', 'B', 'C', 'D', 'F') if valid, 
+                     or None if out of range.
+    """
+    if score < 0 or score > 100:
+        return None
+    elif score >= 80:
+        return "A"
+    elif score >= 70:
+        return "B"
+    elif score >= 60:
+        return "C"
+    elif score >= 50:
+        return "D"
+    else:
+        return "F"
+
+if __name__ == "__main__":
+    try:
+        user_input = float(input("Enter student score (0-100): "))
+        
+        # If the input is a whole number, convert it to an int for cleaner output
+        if user_input.is_integer():
+            user_input = int(user_input)
+            
+        grade = get_grade(user_input)
+        
+        if grade is not None:
+            print(f"Grade: {grade}")
+        else:
+            print("Error: Score must be between 0 and 100.")
+            
+    except ValueError:
+        print("Please enter a valid numeric score.")
 
