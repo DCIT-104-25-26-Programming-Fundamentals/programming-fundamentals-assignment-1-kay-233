@@ -46,6 +46,60 @@
 
 #
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+def generate_fibonacci(n):
+    """Generates a list containing the first n terms of the Fibonacci sequence."""
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+        
+    fib_sequence = [0, 1]
+    for _ in range(2, n):
+        next_term = fib_sequence[-1] + fib_sequence[-2]
+        fib_sequence.append(next_term)
+        
+    return fib_sequence
+
+def is_fibonacci(number):
+    """Determines whether a given number belongs to the Fibonacci sequence."""
+    if number < 0:
+        return False
+        
+    a, b = 0, 1
+    while a < number:
+        a, b = b, a + b
+        
+    return a == number
+
+if __name__ == "__main__":
+    print("=== Fibonacci Sequence Program ===")
+    print("1. Print the first N terms")
+    print("2. Check if a number is in the Fibonacci sequence")
+    
+    choice = input("\nChoose an option (1 or 2): ").strip()
+    
+    if choice == "1":
+        try:
+            n = int(input("How many terms? "))
+            if n <= 0:
+                print("Error: Please enter a positive integer greater than 0.")
+            else:
+                seq = generate_fibonacci(n)
+                print("Fibonacci sequence:", " ".join(map(str, seq)))
+        except ValueError:
+            print("Please enter a valid whole number.")
+            
+    elif choice == "2":
+        try:
+            num = int(input("Enter a number to check: "))
+            if is_fibonacci(num):
+                print(f"{num} is a Fibonacci number.")
+            else:
+                print(f"{num} is NOT a Fibonacci number.")
+        except ValueError:
+            print("Please enter a valid whole number.")
+            
+    else:
+        print("Invalid choice. Please run the program again and select 1 or 2.
+              
 
