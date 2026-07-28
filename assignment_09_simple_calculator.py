@@ -65,6 +65,99 @@
 
 #
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
+def add(a, b):
+    """Returns the sum of two numbers."""
+    return a + b
+
+def subtract(a, b):
+    """Returns the difference between two numbers."""
+    return a - b
+
+def multiply(a, b):
+    """Returns the product of two numbers."""
+    return a * b
+
+def divide(a, b):
+    """Returns the division of two numbers rounded to 2 decimal places."""
+    if b == 0:
+        raise ValueError("Cannot divide by zero.")
+    return round(a / b, 2)
+
+def modulus(a, b):
+    """Returns the remainder of division between two numbers."""
+    if b == 0:
+        raise ValueError("Cannot perform modulus by zero.")
+    return a % b
+
+def exponentiate(a, b):
+    """Returns the result of raising the first number to the power of the second."""
+    return a ** b
+
+def format_number(n):
+    """Formats a number to remove decimal places if it's a whole number."""
+    if isinstance(n, float) and n.is_integer():
+        return int(n)
+    return n
+
+def main():
+    """Main program loop for the simple calculator application."""
+    while True:
+        print("\n============================")
+        print("       SIMPLE CALCULATOR")
+        print("============================")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+        print("5. Modulus")
+        print("6. Exponentiation")
+        print("7. Quit")
+        
+        choice = input("Select an operation (1-7): ").strip()
+        
+        if choice == "7":
+            print("Goodbye!")
+            break
+            
+        if choice not in ["1", "2", "3", "4", "5", "6"]:
+            print("Error: Invalid choice. Please enter a number between 1 and 7.")
+            continue
+            
+        try:
+            num1 = float(input("Enter first number : "))
+            num2 = float(input("Enter second number: "))
+            
+            # Format inputs for cleaner output display if they are whole numbers
+            f_num1 = format_number(num1)
+            f_num2 = format_number(num2)
+            
+            if choice == "1":
+                res = format_number(add(num1, num2))
+                print(f"Result: {f_num1} + {f_num2} = {res}")
+            elif choice == "2":
+                res = format_number(subtract(num1, num2))
+                print(f"Result: {f_num1} - {f_num2} = {res}")
+            elif choice == "3":
+                res = format_number(multiply(num1, num2))
+                print(f"Result: {f_num1} * {f_num2} = {res}")
+            elif choice == "4":
+                res = divide(num1, num2)
+                # Keep 2 decimal places for division as per specifications
+                print(f"Result: {f_num1} / {f_num2} = {res}")
+            elif choice == "5":
+                res = format_number(modulus(num1, num2))
+                print(f"Result: {f_num1} % {f_num2} = {res}")
+            elif choice == "6":
+                res = format_number(exponentiate(num1, num2))
+                print(f"Result: {f_num1} ** {f_num2} = {res}")
+                
+        except ValueError as e:
+            if "Cannot" in str(e):
+                print(f"Error: {e}")
+            else:
+                print("Error: Please enter valid numeric values.")
+
+if __name__ == "__main__":
+    main()
 # =============================================================================
 
